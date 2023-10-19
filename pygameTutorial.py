@@ -5,13 +5,13 @@ pygame.init()
 screen = pygame.display.set_mode((800, 400))  # width and height
 pygame.display.set_caption('Runner')
 
-icon = pygame.image.load('./assets/runner_icon.jpeg')
+icon = pygame.image.load('graphics/runner_icon.jpeg')
 pygame.display.set_icon(icon)
 
 clock = pygame.time.Clock()
 
-test_surface = pygame.Surface((100, 200))  # width and height
-test_surface.fill('Red')
+sky_surface = pygame.image.load('graphics/Sky.png')
+ground_surface = pygame.image.load('graphics/ground.png')
 
 while True:
     for event in pygame.event.get():
@@ -20,7 +20,8 @@ while True:
             exit()
 
     # block image transfer -> puts one surface on anothe surface
-    screen.blit(test_surface, (0, 0))
+    screen.blit(sky_surface, (0, 0))
+    screen.blit(ground_surface, (0, 300))
 
     pygame.display.update()
     clock.tick(60)
