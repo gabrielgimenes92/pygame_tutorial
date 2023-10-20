@@ -31,6 +31,9 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
+        if event.type == pygame.MOUSEMOTION:
+            if player_rect.collidepoint(event.pos):
+                print("collision")
 
     # block image transfer -> puts one surface on anothe surface
     screen.blit(sky_surface, (0, 0))
@@ -44,8 +47,12 @@ while True:
     screen.blit(snail_surf, snail_rect)
     screen.blit(player_surf, player_rect)
 
-    if player_rect.colliderect(snail_rect):
-        print("fudge")
+    # if player_rect.colliderect(snail_rect):
+    #     print("fudge")
+
+    # mouse_pos = pygame.mouse.get_pos()
+    # if player_rect.collidepoint(mouse_pos):
+    #     print(pygame.mouse.get_pressed())
 
     pygame.display.update()
     clock.tick(60)
