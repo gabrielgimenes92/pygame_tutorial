@@ -12,7 +12,7 @@ def display_score():
 
 
 pygame.init()
-screen = pygame.display.set_mode((800, 400))  # width and height
+screen = pygame.display.set_mode((800, 400))
 pygame.display.set_caption('Runner')
 
 icon = pygame.image.load('graphics/runner_icon.jpeg')
@@ -24,13 +24,11 @@ game_active = False
 start_time = 0
 score = 0
 
-# convert image to a format easier for pygame
 sky_surface = pygame.image.load('graphics/Sky.png').convert()
 ground_surface = pygame.image.load('graphics/ground.png').convert()
-# score_surf = test_font.render('My game', False, (64, 64, 64))
-# score_rect = score_surf.get_rect(center=(400, 50))
 
-# with convert_alpha deletes the alpha values
+
+# Obstacles
 snail_surf = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
 snail_rect = snail_surf.get_rect(midbottom=(600, 300))
 
@@ -39,7 +37,7 @@ player_surf = pygame.image.load(
 player_rect = player_surf.get_rect(midbottom=(80, 300))
 player_gravity = 0
 
-# intro screen
+# Intro screen
 player_stand = pygame.image.load(
     'graphics/player/player_stand.png').convert_alpha()
 player_stand = pygame.transform.rotozoom(player_stand, 0, 2)
@@ -51,6 +49,9 @@ game_instruction = test_font.render(
     f'Press space to begin', False, (64, 64, 64))
 game_instruction_rect = game_instruction.get_rect(center=(400, 320))
 
+# Timer
+obstacle_timer = pygame.USEREVENT + 1
+pygame.time.set_timer(obstacle_timer, 900)
 
 while True:
     for event in pygame.event.get():
@@ -69,20 +70,14 @@ while True:
                 snail_rect.left = 600
                 game_active = True
                 start_time = pygame.time.get_ticks()
+        if event.type == obstacle_timer and game_active:
+            print("test")
 
     if game_active:
-        # block image transfer -> puts one surface on anothe surface
         screen.blit(sky_surface, (0, 0))
         screen.blit(ground_surface, (0, 300))
-        # pygame.draw.rect(screen, '#c0e8ec', score_rect)
-        # pygame.draw.rect(screen, '#c0e8ec', score_rect, 10)
-        # screen.blit(score_surf, score_rect)
-        score = display_score()
 
-        snail_rect.x -= 4
-        if snail_rect.right < 0:
-            snail_rect.left = 800
-        screen.blit(snail_surf, snail_rect)
+        score = display_score()
 
         # Player
         player_gravity += 1
