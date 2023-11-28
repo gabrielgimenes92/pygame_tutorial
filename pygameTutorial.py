@@ -93,16 +93,6 @@ def collision_sprite():
         return False
     else: return True
 
-def player_animation():
-    global player_surf, player_index
-    if player_rect.bottom < 300:
-        player_surf = player_jump
-    else:
-        player_index += 0.1
-        if player_index >= len(player_walk):
-            player_index = 0
-        player_surf = player_walk[int(player_index)]
-
 pygame.init()
 screen = pygame.display.set_mode((800, 400))
 pygame.display.set_caption('Runner')
