@@ -7,4 +7,4 @@ To run this game, you'll need Python 3 installed, for instructions go to: https:
 python pygameTutorial.py
 ```
 <sub>A game made following this tutorial: https://youtu.be/AY9MnQ4x3zk?si=MSBIb8qxjJjgBaPW <br>
-Thanks you Code Clear - https://www.youtube.com/@ClearCode</sub>
+Thank you Code Clear - https://www.youtube.com/@ClearCode</sub>
